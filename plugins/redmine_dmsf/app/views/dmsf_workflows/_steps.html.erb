@@ -1,0 +1,73 @@
+<%
+# encoding: utf-8
+# Redmine plugin for Document Management System "Features"
+#
+# Copyright (C) 2011-15   Karel Pičman <karel.picman@kontron.com>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+%>
+
+<% if @dmsf_workflow.project %>
+  <h2><%= link_to l(:label_dmsf_workflow_plural), settings_project_path(@project, :tab => 'dmsf_workflow') %> &#187; <%=h @dmsf_workflow %></h2>
+<% else %>
+  <h2><%= link_to l(:label_dmsf_workflow_plural), dmsf_workflows_path %> &#187; <%=h @dmsf_workflow %></h2>
+<% end %>
+
+<%= labelled_form_for @dmsf_workflow do |f| %>
+  <%= error_messages_for 'workflow' %>
+  <div class="box tabular">
+    <p><%= f.text_field :name, :value => @dmsf_workflow.name, :required => true %><%= submit_tag l(:button_save) %></p>
+  </div>  
+<% end %>    
+
+<div class="tab-content" id="tab-content-members">  
+  <p>  
+    <%= link_to l(:dmsf_new_step), new_step_dmsf_workflow_path(@dmsf_workflow), :remote => true, :class => 'icon icon-add' %>
+  </p>  
+  <% steps = @dmsf_workflow.dmsf_workflow_steps.collect{|s| s.step}.uniq %>
+  <% if steps.any? %>
+    <table class="list">
+      <thead><tr>
+        <th><%= l(:label_dmsf_workflow_step) %></th>
+        <th><%= l(:label_dmsf_workflow_approval_plural) %></th>
+        <th><%=  l(:button_sort)%></th>    
+        <th></th>
+      </tr></thead>
+      <tbody>      
+      <% steps.each do |i|%>  
+        <tr id="step-<%= i %>" class="<%= cycle 'odd', 'even' %> step">            
+          <td class="step"><%= i %></td>
+          <td class="approval">                
+            <% @dmsf_workflow.dmsf_workflow_steps.collect{|s| (s.step == i) ? s : nil}.compact.each_with_index do |step, j| %>
+              <% if j != 0 %>
+                <b><%= step.soperator %></b>&nbsp
+              <% end %>
+              <%= link_to_user step.user %>
+            <% end %>
+          </td>        
+          <td class="reorder">  
+            <%= reorder_links('workflow_step', {:action => 'edit', :id => @dmsf_workflow, :step => i}, :put) %>
+          </td>
+          <td class="buttons">      
+            <%= delete_link edit_dmsf_workflow_path(@dmsf_workflow, :step => i) %>
+          </td>  
+        </tr>
+      <% end; reset_cycle %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="nodata"><%= l(:label_no_data) %></p>
+  <% end %>
+</div>

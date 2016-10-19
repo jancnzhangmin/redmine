@@ -1,0 +1,12 @@
+node_modules/
+minimalflat2/
+src/stylesheets
+samples/
+
+.*
+*.map
+*.log
+*.zip
+*.js
+!theme.js
+!.gitignore

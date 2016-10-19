@@ -1,0 +1,32 @@
+= Redmine-Plugin: gantt_extension
+Adds an additional marker to issue for a custom defined date. You can choose any custom field (with Format "Date") at the plugin configuration page
+
+== Requirements
+<b>Attention!!</b> This plugin extends core function!
+
+<b>Tested versions:</b>
+- 3.2.1.devel 
+- 3.1.x
+
+
+== Installation
+1) go to `{REDMINE_ROOT}/plugin` directory.
+
+2) Intall:
+  git clone https://github.com/braini75/gantt_extension.git
+
+3) Restart the redmine service. E.g. 
+  service apache2 restart
+
+4) enjoy!
+
+
+== Usage
+- You need to have at least one custom-field of type 'date'.
+- Just enable the plugin and choose the field to display in "Administration->Plugins".
+- Enjoy extra function in gantt-charts.
+
+== Development
+<b>These Instuctions here are for developer or power user!</b> 
+
+They are for the case, that redmine is updating some functions in their gantt modul, which might affect the function. Make sure that all functions in +/path/to/redmine/plugins/gantt_extension/lib/gantt.rb+ containing at least the funcionality of their original version in +/path/to/redmine/lib/redmine/helpers/gantt.rb+

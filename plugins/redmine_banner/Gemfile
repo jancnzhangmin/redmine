@@ -1,0 +1,4 @@
+source 'http://gems.ruby-china.org/'
+group :test do
+  gem 'simplecov-rcov', :require => false
+end

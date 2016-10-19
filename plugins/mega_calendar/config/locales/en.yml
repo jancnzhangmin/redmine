@@ -1,0 +1,36 @@
+en:
+  calendar: "Calendar"
+  holidays: "Holiday"
+  holiday:  "Holiday"
+  my_issues: "My issues"
+  all_issues: "All issues"
+  user: "User"
+  start: "Start"
+  end: "End"
+  action: "Action"
+  show: "Show"
+  edit: "Edit"
+  new: "New"
+  destroy: "Destroy"
+  prev: "Prev"
+  next: "Next"
+  save: "Save"
+  list: "List"
+  def_holiday_color: "Default color for holiday"
+  def_color: "Default color"
+  project: "Project"
+  status: "Status"
+  save_question: "Do you really want to save?"
+  field_start: "Start"
+  field_end: "End"
+  select_default: "Select..."
+  sub_path: "Sub path URL"
+  no_right: "You do not have the necessary rights to view this section!"
+  allowed_users: "Allowed users"
+  activerecord:
+    errors:
+      models:
+        holiday:
+          attributes:
+            end:
+              greater_than_start: "must be greater than start date"

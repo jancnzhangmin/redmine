@@ -1,0 +1,217 @@
+/*
+Copyright 2014 Egbert van der Wal <egbert@robovalley.com>
+
+This file is part of redmine_planning
+
+redmine_planning is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+redmine_planning is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with redmine_planning. If not see <http://www.gnu.org/licenses/>.
+*/
+
+#redmine_planning_chart
+{
+    height:             480px;
+    width:              100%;
+}
+
+svg tspan,
+svg text
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+div#planning_list
+{
+    overflow:           hidden;
+}
+
+div#planning_list .table
+{
+    position:           relative;
+    overflow:           scroll;
+    width:              100%;
+    height:             100%;
+}
+
+div#planning_list .ui-resizable-e
+{
+    background-color:   transparent;
+    width:              8px;
+}
+
+
+div #planning_list .planning_list_row_container
+{
+}
+
+div#planning_list .planning_issue
+{
+    position:               absolute;
+    width:                  500px;
+    -webkit-touch-callout:  none;
+    -webkit-user-select:    none;
+    -khtml-user-select:     none;
+    -moz-user-select:       none;
+    -ms-user-select:        none;
+    user-select:            none;
+    cursor:                 context-menu;
+}
+
+div#planning_list .planning_issue_column
+{
+    display:            inline-block;
+    white-space:        nowrap; 
+    border-top:         1px solid #aaa;
+    border-left:        1px solid #aaa;
+    margin:             0;
+    padding:            1px;
+    overflow:           hidden;
+    vertical-align:     middle;
+    z-index:            101;
+}
+
+div#planning_list .planning_issue_column:last-child
+{
+    border-right:       1px solid #aaa;
+}
+
+div#planning_list .planning_issue:last-child .planning_issue_column
+{
+    border-bottom:      1px solid #aaa;
+}
+
+div#planning_list .planning_issue_column.issue_id
+{
+    width:              30px;
+    text-align:         right;
+}
+
+div#planning_list .planning_issue_column.issue_tracker
+{
+    width:              50px;
+}
+
+div#planning_list .planning_issue_column.issue_name
+{
+    width:              200px;
+}
+
+div#planning_list .planning_issue_column.issue_start
+{
+    width:              80px;
+}
+
+div#planning_list .planning_issue_column.issue_due
+{
+    width:              80px;
+}
+
+
+div.planning_tooltip
+{
+    position:           absolute;
+    border:             thin solid #aa0;
+    border-radius:      3px;
+    overflow-x:         hidden;
+    overflow-y:         auto;
+    max-height:         300px;
+    background-color:   #fff;
+    padding:            5;
+    font-size:          8pt;
+    width:              300px;
+    z-index:            100;
+    padding:            5px;
+
+    -moz-hyphens:       auto;
+    -webkit-hyphens:    auto;
+    hyphens:            auto;
+}
+
+div.planning_tooltip table
+{
+
+
+}
+div.planning_tooltip table,
+div.planning_tooltip table tr,
+div.planning_tooltip table th,
+div.planning_tooltip table td
+{
+    margin:             0;
+    padding:            0 3px;
+    border-collapse:    0;
+    border:             none;
+}
+
+div.planning_tooltip table th
+{
+    font-weight:        bold;
+    text-align:         right;
+    vertical-align:     top;
+    width:              100px;
+}
+
+div.planning_date_tooltip
+{
+    position:           absolute;
+    border:             thin solid #aa0;
+    border-radius:      3px;
+    background-color:   #fff;
+    z-index:            100;
+    padding:            5px;
+
+    display:            table-cell;
+    text-align:         center;
+    vertical-align:     middle;
+}
+
+div.planning_date_tooltip p
+{
+    padding:            0;
+    margin:             0;
+}
+
+.planning_toolbar_button_set
+{
+    display:            inline-block;
+    font-size:          0;
+}
+
+#planning_toolbar
+{
+    margin:             5px 0;
+}
+
+#planning_toolbar button,
+#planning_toolbar label
+{
+    font-size:          20pt;
+    height:             32px;
+    margin:             0;
+    padding:            0;
+}
+
+#planning_fullscreen_overlay
+{
+    position:           fixed;
+    top:                0;
+    left:               0;
+    width:              100%;
+    height:             100%;
+    background-color:   white;
+    z-index:            100;
+}
